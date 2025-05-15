@@ -32,3 +32,14 @@
   </div>
   <%= f.button :submit, "Submit Review" %>
 <% end %>
+
+<h3>❤️ Add to Favourites</h3>
+
+<% if Favourite.exists?(car: @car) %>
+  <p>This car is already in your favourites.</p>
+<% else %>
+  <%= simple_form_for [@car, Favourite.new] do |f| %>
+    <%= f.submit "Add to Favourites" %>
+  <% end %>
+<% end %>
+<%= link_to "Garage", favourites_path %>

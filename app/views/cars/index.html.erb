@@ -1,12 +1,16 @@
 <h1>🚗 All Cars</h1>
 
-<ul>
+<ul style="list-style: none; padding: 0;">
   <% @cars.each do |car| %>
-    <li>
-      <strong><%= car.brand %> <%= car.model %></strong> —
-      <%= car.year %> —
-      <%= car.fuel.capitalize %> —
-      Owner: <%= car.owner.nickname %>
+    <li style="margin-bottom: 1rem;">
+      <strong>
+        <%= link_to "#{car.brand} #{car.model}", car_path(car) %>
+      </strong>
+      — <%= car.year %>
+      — <%= car.fuel.capitalize %>
+      — Owner: <%= car.owner.nickname %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to "❤️ Go to My Garage", favourites_path, style: "display: inline-block; margin-top: 1rem;" %>
